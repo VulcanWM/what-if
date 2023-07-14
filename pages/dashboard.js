@@ -3,10 +3,10 @@ import { getServerSession } from "next-auth/next"
 import { signOut } from "next-auth/react";
 import Layout from '../components/layout'
 
-export default function Home( { session } ) {
+export default function Home( { user } ) {
   return (
     <Layout>
-        <h4>Signed in as <strong>{session.user.name}</strong></h4>
+        <h4>Signed in as <strong>{user.name}</strong></h4>
         <button onClick={() => signOut()}>Sign out</button>
     </Layout>
   );
@@ -22,10 +22,10 @@ export async function getServerSideProps(context) {
       },
     }
   }
-  
+  const user = session.user;
   return {
     props: {
-      session
+      user
     },
   }
 }
