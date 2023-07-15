@@ -3,9 +3,11 @@ import { getServerSession } from "next-auth/next"
 import { signOut } from "next-auth/react";
 import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
+import { useState } from React
 
 export default function Home( { user } ) {
   user = JSON.parse(user)
+  const [page, setPage] = useState(1)
   return (
     <Layout>
         <h4>Signed in as <strong>{user.username}</strong></h4>

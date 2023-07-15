@@ -4,7 +4,6 @@ const UserSchema = new mongoose.Schema({
   username: String,
   image: String,
   roles: [String],
-  pfp: String,
   email: String,
   warnings: Number,
   posted: [Number]

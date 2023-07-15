@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
 import { signIn } from "next-auth/react";
