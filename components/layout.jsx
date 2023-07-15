@@ -27,7 +27,7 @@ export default function Layout({ navbar, moderator, children }) {
         <div className={styles.topnav + " " + styles.flex_center + " " + styles.flex_row}>
           <a href="/">Dashboard</a>
           <a href="/profile">Your Profile</a>
-          <a href="/newscenario">New Scenario</a>
+          <a href="/new_scenario">New Scenario</a>
           {moderator == "yes" && <a href="/admin">Admin Page</a>}
         </div>
       }

@@ -16,7 +16,6 @@ export default async (req, res) => {
             const username_exists = await get_user(username)
             if (username_exists){
                 res.redirect(`/create_account?error=${username} has been taken!`)
-
             } else {
                 create_user(email, username, image)
                 res.redirect("/intro")
@@ -26,7 +25,7 @@ export default async (req, res) => {
         res.redirect("/")
     }
   } else {
-    res.redirect("/")
+    res.redirect("/create_account")
   }
   res.end()
 }

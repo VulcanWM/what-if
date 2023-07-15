@@ -2,17 +2,19 @@ import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
 import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
-import { useRouter } from 'next/router'
 
 export default function Home( { user } ) {
   user = JSON.parse(user)
-  const router = useRouter()
-  const { msg } = router.query
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
-        {msg && <p><strong>{msg}</strong></p>}
-        <h1>Hello {user.username}</h1>
+      <h2>Create a new scenario</h2>
+        <p>If your scenario gets accepted, you'll get the Helper role!</p>
+        <form method="POST" action="/api/new_scenario">
+            <input placeholder="title" name="title" autoComplete="off" required/><br/>
+            <textarea id="desc" placeholder="description" name="desc" rows="10" cols="40"></textarea><br/>
+            <button>Create scenario</button>
+        </form>
       </>
     </Layout>
   );
