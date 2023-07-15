@@ -2,10 +2,14 @@ import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
 import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
+import { useRouter } from 'next/router'
 
 export default function Home( { session_user } ) {
+  const router = useRouter()
+  const { error } = router.query
   return (
     <Layout>
+        {error && <p className="error">{error}</p>}
         <h4>Hello <strong>{session_user.email}</strong></h4>
         <p>For you to use this website, you need to give yourself a username</p>
         <form action="/api/create_account" method='POST'>
