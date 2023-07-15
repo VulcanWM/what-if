@@ -4,10 +4,6 @@ body {
     color: white;
 }
 
-.flex-row {
-    flex-direction: row;
-}
-
 button {
     background-color: white;
     color: black;
@@ -38,42 +34,6 @@ a:hover {
     text-decoration: none;
 }
 
-/* Add a black background color to the top navigation */
-.topnav {
-    background-color: #222244;
-    border-radius: 15px;
-    box-shadow: 5px 10px 500px black;
-    /*background-color: #0000FF;*/
-    overflow: hidden;
-    transition: 0.2s;
-}
-
-.topnav:hover {
-    background-color: #111122;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-    /*background-color: #00008B;*/
-    background-color: #483D8B;
-    color: white;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-}
 .dropdown {
     float: left;
     overflow: hidden;
