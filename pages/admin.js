@@ -12,7 +12,7 @@ export default function Home( { user } ) {
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
         {msg && <p><strong>{msg}</strong></p>}
-        <h2>Hello {user.username}</h2>
+        <h2>Admin Dashboard</h2>
       </>
     </Layout>
   );
@@ -36,6 +36,15 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         destination: '/create_account',
+        permanent: false,
+      },
+    }
+  }
+
+  if (user.roles.includes("Moderator") == false) {
+    return {
+      redirect: {
+        destination: '/dashboard',
         permanent: false,
       },
     }
