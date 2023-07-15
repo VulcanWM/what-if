@@ -4,19 +4,8 @@ body {
     color: white;
 }
 
-.flex-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .flex-row {
     flex-direction: row;
-}
-
-.content {
-    margin: 0 5em;
 }
 
 button {

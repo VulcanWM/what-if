@@ -1,17 +1,64 @@
 import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
-import { signOut } from "next-auth/react";
 import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
-import { useState } from React
+import { useState } from "react"
+import styles from '../styles/intro.module.css';
 
 export default function Home( { user } ) {
   user = JSON.parse(user)
-  const [page, setPage] = useState(1)
+  const [slide, setSlide] = useState(1)
   return (
     <Layout>
-        <h4>Signed in as <strong>{user.username}</strong></h4>
-        <button onClick={() => signOut()}>Sign out</button>
+        <>
+            {slide == 1 && 
+            <>
+                <h3>What If?</h3>
+                <p>This is a website where you will face hypothetical scenarios (what if), and you can enter your thoughts for each of them.</p>
+                <p>After you enter your thought, you will be able to view what other user's have said, and compare your thoughts to their's!</p>
+                <button className={styles.next} onClick={()=> {setSlide(slide+1)}}>Next</button>
+            </> 
+            }
+            {slide == 2 && 
+            <>
+                <h3>Rules</h3>
+                <ol>
+                    <li>Don't be mean or toxic</li>
+                    <li>Don't swear</li>
+                    <li>No hate speech/slurs</li>
+                    <li>Do not attempt to bypass filters</li>
+                    <li>Do not attempt to harass moderators for their decisions</li>
+                    <li>No NSFW, politics, religion, or controversial topics</li>
+                    <li>Enjoy and have fun</li>
+                </ol>
+                <button className={styles.next} onClick={()=> {setSlide(slide+1)}}>Next</button>
+            </> 
+            }
+            {slide == 3 && 
+            <>
+                <h3>Support this project</h3>
+                <p>Follow <a href="https://github.com/VulcanWM">@VulcanWM on GitHub</a> to see all the updates and how this project was made.</p>
+                <button className={styles.next} onClick={()=> {window.location.href='/dashboard'}}>Start having fun!</button>
+            </> 
+            }
+            <div className={styles.dot_container}>
+                {slide == 1 ? 
+                    <span className={styles.dot + " " + styles.active}/>
+                : 
+                    <span className={styles.dot}/>
+                }
+                {slide == 2 ? 
+                    <span className={styles.dot + " " + styles.active}/>
+                : 
+                    <span className={styles.dot}/>
+                }
+                {slide == 3 ? 
+                    <span className={styles.dot + " " + styles.active}/>
+                : 
+                    <span className={styles.dot}/>
+                }
+            </div>
+        </>
     </Layout>
   );
 }

@@ -7,10 +7,10 @@ export default function Home( { session_user } ) {
   return (
     <Layout>
         <h4>Hello <strong>{session_user.email}</strong></h4>
-        <p>Create an account</p>
+        <p>For you to use this website, you need to give yourself a username</p>
         <form action="/api/create_account" method='POST'>
-            <input name="username" placeholder="username"/>
-            <input type="submit"/>
+            <input name="username" placeholder="username"/><br/>
+            <input type="submit" value="Submit"/>
         </form>
     </Layout>
   );

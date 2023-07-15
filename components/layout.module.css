@@ -1,0 +1,10 @@
+.flex_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    margin: 0 5em;
+}

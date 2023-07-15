@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styles from './layout.module.css';
 
 export const siteTitle = "Next Auth Redirect";
 
@@ -22,7 +23,9 @@ export default function Layout({ children }) {
         <meta property="og:type" content="Website" />
         <title>{siteTitle}</title>
       </Head>
-      <main>{children}</main>
+      <main className={styles.flex_center + " " + styles.context}>
+        {children}
+      </main>
     </div>
   );
 }
