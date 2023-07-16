@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
+import Link from 'next/link'
 
 export const siteTitle = "What If";
 
@@ -25,10 +26,10 @@ export default function Layout({ navbar, moderator, children }) {
       </Head>
       {navbar == "yes" && 
         <div className={styles.topnav + " " + styles.flex_center + " " + styles.flex_row}>
-          <a href="/">Dashboard</a>
-          <a href="/profile">Your Profile</a>
-          <a href="/new_scenario">New Scenario</a>
-          {moderator == "yes" && <a href="/admin">Admin Page</a>}
+          <Link href="/">Dashboard</Link>
+          <Link href="/profile">Your Profile</Link>
+          <Link href="/new_scenario">New Scenario</Link>
+          {moderator == "yes" && <Link href="/admin">Admin Page</Link>}
         </div>
       }
       <main className={styles.flex_center + " " + styles.content}>
