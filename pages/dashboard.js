@@ -17,18 +17,20 @@ export default function Home( { user, scenarios } ) {
         <h2>Hello {user.username}</h2>
         <h2>All Scenarios</h2>
         <table>
-          <tr>
-            <th>Title</th>
-            <th>Done?</th>
-          </tr>
-          { 
-            scenarios.map((scenario, index) => (
-              <tr style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
-                <td>{scenario.title}</td>
-                {user.posted.includes(scenario._id) ? <td>Yes</td> : <td>No</td>}
-              </tr>
-            ))
-          }
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <th>Done?</th>
+            </tr>
+            { 
+              scenarios.map((scenario, index) => (
+                <tr id={index} style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
+                  <td>{scenario.title}</td>
+                  {user.posted.includes(scenario._id) ? <td>Yes</td> : <td>No</td>}
+                </tr>
+              ))
+            }
+            </tbody>
         </table>
       </>
     </Layout>

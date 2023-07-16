@@ -18,8 +18,8 @@ export default function Home( { user } ) {
         <div className="flex_row">
             { 
               user.roles.map((role, index) => ( 
-                <div className={styles.tooltip}>{role}
-                <span className={styles.tooltiptext}>{rolesinfo[role]}</span>
+                <div id={index} className={styles.tooltip}>{role}
+                  <span className={styles.tooltiptext}>{rolesinfo[role]}</span>
                 </div>
               ))
             }
