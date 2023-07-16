@@ -10,7 +10,7 @@ export default function Home( { user } ) {
       <>
       <h2>Create a new scenario</h2>
         <p>If your scenario gets accepted, you'll get the Helper role!</p>
-        <form method="POST" action="/api/new_scenario">
+        <form className='flex_center' method="POST" action="/api/new_scenario">
             <input placeholder="title" name="title" autoComplete="off" required/><br/>
             <textarea id="desc" placeholder="description" name="desc" rows="10" cols="40"></textarea><br/>
             <button>Create scenario</button>

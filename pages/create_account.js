@@ -12,7 +12,7 @@ export default function Home( { session_user } ) {
         {error && <p className="error">{error}</p>}
         <h4>Hello <strong>{session_user.email}</strong></h4>
         <p>For you to use this website, you need to give yourself a username</p>
-        <form action="/api/create_account" method='POST'>
+        <form className='flex_center' action="/api/create_account" method='POST'>
             <input name="username" placeholder="username"/><br/>
             <input type="submit" value="Submit"/>
         </form>

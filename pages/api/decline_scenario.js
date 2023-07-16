@@ -8,6 +8,10 @@ export default async (req, res) => {
     if (session) {
         const email = session.user.email;
         const user = await get_user_from_email(email);
+        if (!user){
+          res.redirect("/create_account");
+          return;
+        }
         if (user.roles.includes("Moderator") == false){
             res.redirect("/dashboard");
             return;

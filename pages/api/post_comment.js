@@ -1,24 +1,23 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "./auth/[...nextauth]"
-import { get_user_from_email, accept_scenario } from "../../lib/database"
+import { get_user_from_email, post_comment } from "../../lib/database"
 
 export default async (req, res) => {
   const session = await getServerSession(req, res, authOptions)
-  if (req.method == 'GET') {
+  if (req.method == 'POST') {
     if (session) {
         const email = session.user.email;
         const user = await get_user_from_email(email);
         if (!user){
-          res.redirect("/create_account");
-          return;
+            res.redirect("/create_account")
         }
-        if (user.roles.includes("Moderator") == false){
-            res.redirect("/dashboard");
-            return;
+        const id = req.query.id
+        const comment = req.body.comment;
+        const func = await post_comment(id, comment, user.username)
+        if (func == true){
+            res.redirect(`/scenario/${id}`)
         } else {
-            const id = req.query.id
-            const func = await accept_scenario(id)
-            res.redirect(`/admin?msg=${func}`)
+            res.redirect(`/scenario/${id}?msg=${func}`)
         }
     } else {
         res.redirect("/")
