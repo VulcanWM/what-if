@@ -2,13 +2,10 @@ import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
 import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
-import { useRouter } from 'next/router'
 import styles from '../styles/profile.module.css';
 
 export default function Home( { user } ) {
   user = JSON.parse(user)
-  const router = useRouter()
-  const { msg } = router.query
   const rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Early User": "This user is one of this website's first users!"}
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>

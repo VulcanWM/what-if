@@ -4,10 +4,12 @@ import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
 import { useState } from "react"
 import styles from '../styles/intro.module.css';
+import { useRouter } from 'next/router'
 
 export default function Home( { user } ) {
   user = JSON.parse(user)
   const [slide, setSlide] = useState(1)
+  const router = useRouter()
   return (
     <Layout>
         <>
@@ -38,7 +40,7 @@ export default function Home( { user } ) {
             <>
                 <h3>Support this project</h3>
                 <p>Follow <a href="https://github.com/VulcanWM">@VulcanWM on GitHub</a> to see all the updates and how this project was made.</p>
-                <button className={styles.next} onClick={()=> {window.location.href='/dashboard'}}>Start having fun!</button>
+                <button className={styles.next} onClick={()=> {router.push("/dashboard")}}>Start having fun!</button>
             </> 
             }
             <div className={styles.dot_container}>

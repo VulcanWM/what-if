@@ -9,6 +9,7 @@ export default function Home( { user, scenarios } ) {
   scenarios = JSON.parse(scenarios)
   const router = useRouter()
   const { msg } = router.query
+
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
@@ -22,7 +23,7 @@ export default function Home( { user, scenarios } ) {
           </tr>
           { 
             scenarios.map((scenario, index) => (
-              <tr style={{cursor: "pointer"}} onClick="window.location.href='/scenario/{{scenario['_id']}}'">
+              <tr style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
                 <td>{scenario.title}</td>
                 {user.posted.includes(scenario._id) ? <td>Yes</td> : <td>No</td>}
               </tr>

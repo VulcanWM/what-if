@@ -31,7 +31,7 @@ export default function Layout({ navbar, moderator, children }) {
           {moderator == "yes" && <a href="/admin">Admin Page</a>}
         </div>
       }
-      <main className={styles.flex_center + " " + styles.context}>
+      <main className={styles.flex_center + " " + styles.content}>
         {children}
       </main>
     </div>
