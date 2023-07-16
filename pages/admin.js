@@ -22,8 +22,8 @@ export default function Home( { user, scenarios } ) {
                 <p>{scenario.title}</p>
                 <p>{scenario.desc}</p>
                 <p>By: {scenario.username}</p>
-                <a href={`/api/accept_scenario/${scenario._id}`}>Accept Scenario</a>
-                <a href={`/api/decline_scenario/${scenario._id}`}>Decline Scenario</a>
+                <a href={`/api/accept_scenario?id=${scenario._id}`}>Accept Scenario</a>
+                <a href={`/api/decline_scenario?id=${scenario._id}`}>Decline Scenario</a>
             </>
           ))
         }
