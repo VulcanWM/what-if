@@ -9,7 +9,13 @@ export default function Home( ) {
         <p><strong>Signin to view your dashboard!</strong></p>
         <p>Not signed in</p>
         <br />
-        <button onClick={() => signIn()}>Sign in</button>
+        <button
+          onClick={async() => {
+            await signIn();
+          }}
+        >
+          Sign in
+        </button>
       </Layout>
   );
 }
