@@ -1,12 +1,16 @@
 import { authOptions } from "./../api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
 import Layout from '../../components/layout'
-import { get_user, get_user_from_email } from "../../lib/database"
+import { get_user, get_user_from_email, get_all_scenarios } from "../../lib/database"
 import styles from '../../styles/profile.module.css';
+import { useRouter } from 'next/router'
 
-export default function Home( { user, document } ) {
+export default function Home( { user, document, scenarios } ) {
   user = JSON.parse(user)
   document = JSON.parse(document)
+  scenarios = JSON.parse(scenarios);
+  console.log(scenarios);
+  const router = useRouter()
   const rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Early User": "This user is one of this website's first users!"}
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
@@ -25,6 +29,25 @@ export default function Home( { user, document } ) {
               ))
             }
         </div>
+        <h3>All of {document.username}'s completed scenarios</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Title</th>
+                </tr>
+                { 
+                    scenarios.map((scenario, index) => ( 
+                        <>
+                            {document.posted.includes(scenario._id) && 
+                                <tr style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
+                                    <td>{scenario.title}</td>
+                                </tr> 
+                            }
+                        </>
+                    ))
+                }
+            </tbody>
+        </table>
       </>
     </Layout>
   );
@@ -62,10 +85,13 @@ export async function getServerSideProps(context) {
       }
   }
 
+  const scenarios = await get_all_scenarios()
+  console.log(scenarios)
   return {
     props: {
       user: JSON.stringify(user),
-      document: JSON.stringify(document)
+      document: JSON.stringify(document),
+      scenarios: JSON.stringify(scenarios)
     },
   }
 }

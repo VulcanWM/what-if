@@ -1,8 +1,6 @@
 import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth/next"
-import Layout from '../components/layout'
 import { get_user_from_email } from "../lib/database"
-import styles from '../styles/profile.module.css';
 
 export default function Home( {  } ) {
 }
