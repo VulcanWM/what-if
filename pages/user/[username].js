@@ -9,7 +9,7 @@ export default function Home( { user, document, scenarios } ) {
   user = JSON.parse(user)
   document = JSON.parse(document)
   scenarios = JSON.parse(scenarios);
-  console.log(scenarios);
+  
   const router = useRouter()
   const rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Early User": "This user is one of this website's first users!"}
   return (
@@ -86,7 +86,7 @@ export async function getServerSideProps(context) {
   }
 
   const scenarios = await get_all_scenarios()
-  console.log(scenarios)
+
   return {
     props: {
       user: JSON.stringify(user),
