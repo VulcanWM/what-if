@@ -24,7 +24,7 @@ export default function Home( { user, scenarios } ) {
         <form className='flex_center' method="POST" action="/api/ban_user">
           <h3>Ban User</h3>
           <input placeholder="username" name="username" autocomplete="off" required/>
-          <textarea id="reason" placeholder="reason" name="reason" rows="5" cols="40" value="they were being rude"/>
+          <textarea id="reason" placeholder="reason" name="reason" rows="5" cols="40" defaultValue="they were being rude"/>
           <button>Ban User</button>
         </form>
         <form className='flex_center' method="POST" action="/api/unban_user">
