@@ -15,6 +15,12 @@ export default function Home( { user, scenarios } ) {
       <>
         {msg && <p><strong>{msg}</strong></p>}
         <h2>Mod Dashboard</h2>
+        <form class='flex_center'  method="POST" action="/api/add_warning">
+          <h3>Add Warnings</h3>
+          <input placeholder="username" name="username" autocomplete="off" required/>
+          <input placeholder="amount of warns" name="amount" type="number" autocomplete="off" required/>
+          <button>Add Warnings</button>
+        </form>
         {scenarios.length == 0 && <p>There are no unverified scenarios!</p>}
         { 
           scenarios.map((scenario, index) => ( 
