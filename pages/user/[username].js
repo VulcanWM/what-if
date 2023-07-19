@@ -15,39 +15,43 @@ export default function Home( { user, document, scenarios } ) {
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
-        {user.roles.includes("Moderator") && <p>{document.username} has {document.warnings} warnings!</p>}
-        <div className="flex_center flex_row">
-            <h2>{document.username}'s Profile</h2>
-            <img src={document.image} alt="Profile Pic" width="10%" height="10%" style={{borderRadius: "50%",marginLeft: "10px"}}/>
-        </div>
-        <div className="flex_row">
-            { 
-              document.roles.map((role, index) => ( 
-                <div id={index} className={styles.tooltip}>{role}
-                  <span className={styles.tooltiptext}>{rolesinfo[role]}</span>
-                </div>
-              ))
-            }
-        </div>
-        <h3>All of {document.username}'s completed scenarios</h3>
-        <table>
-            <tbody>
-                <tr>
-                    <th>Title</th>
-                </tr>
+        {document.banned != false ? <h3>{document.username} has been banned for {document.banned}</h3>: 
+          <>
+            {user.roles.includes("Moderator") && <p>{document.username} has {document.warnings} warnings!</p>}
+            <div className="flex_center flex_row">
+                <h2>{document.username}'s Profile</h2>
+                <img src={document.image} alt="Profile Pic" width="10%" height="10%" style={{borderRadius: "50%",marginLeft: "10px"}}/>
+            </div>
+            <div className="flex_row">
                 { 
-                    scenarios.map((scenario, index) => ( 
-                        <>
-                            {document.posted.includes(scenario._id) && 
-                                <tr style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
-                                    <td>{scenario.title}</td>
-                                </tr> 
-                            }
-                        </>
-                    ))
+                  document.roles.map((role, index) => ( 
+                    <div id={index} className={styles.tooltip}>{role}
+                      <span className={styles.tooltiptext}>{rolesinfo[role]}</span>
+                    </div>
+                  ))
                 }
-            </tbody>
-        </table>
+            </div>
+            <h3>All of {document.username}'s completed scenarios</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Title</th>
+                    </tr>
+                    { 
+                        scenarios.map((scenario, index) => ( 
+                            <>
+                                {document.posted.includes(scenario._id) && 
+                                    <tr style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
+                                        <td>{scenario.title}</td>
+                                    </tr> 
+                                }
+                            </>
+                        ))
+                    }
+                </tbody>
+            </table>
+          </>
+        }
       </>
     </Layout>
   );

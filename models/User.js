@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   warnings: Number,
   posted: [Number],
-  banned: Boolean
+  banned: mongoose.Mixed,
 })
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema)
