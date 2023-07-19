@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "./auth/[...nextauth]"
 import { get_user_from_email, post_comment } from "../../lib/database"
+import { profanity } from '@2toad/profanity';
 
 export default async (req, res) => {
   const session = await getServerSession(req, res, authOptions)
@@ -13,7 +14,7 @@ export default async (req, res) => {
         }
         const id = req.query.id
         const comment = req.body.comment;
-        const func = await post_comment(id, comment, user.username)
+        const func = await post_comment(id, profanity.censor(comment), user.username)
         if (func == true){
             res.redirect(`/scenario/${id}`)
         } else {
