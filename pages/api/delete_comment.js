@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "./auth/[...nextauth]"
-import { get_user_from_email, decline_scenario } from "../../lib/database"
+import { get_user_from_email, delete_comment } from "../../lib/database"
 
 export default async (req, res) => {
   const session = await getServerSession(req, res, authOptions)
@@ -17,8 +17,9 @@ export default async (req, res) => {
             return;
         } else {
             const id = req.query.id
-            const func = await decline_scenario(id)
-            res.redirect(`/mod?msg=${func}`)
+            const username = req.query.username;
+            const func = await delete_comment(id, username)
+            res.redirect(`/scenario/${id}?msg=${func}`)
         }
     } else {
         res.redirect("/")

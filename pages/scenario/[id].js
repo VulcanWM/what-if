@@ -14,6 +14,7 @@ export default function Home( { user, scenario, comments } ) {
   return (
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
+        {msg && <p><strong>{msg}</strong></p>}
         <h2>{scenario.title}</h2>
         <p>{scenario.desc}</p>
         {user.posted.includes(scenario._id) ? 
@@ -26,12 +27,12 @@ export default function Home( { user, scenario, comments } ) {
                     <p>{comment.body}</p>
                     {user.username == comment.username ? <p>By <a href="/profile">you</a></p> : <p>By <a href={`/user/${comment.username}`}>{comment.username}</a></p>}
                     <br/>
+                    {user.roles.includes("Moderator") && <a href={`/api/delete_comment?id=${scenario._id}&username=${comment.username}`}>↑Delete Comment↑</a>}
                 </div>
               ))
             }
         </>
         :<>
-            {msg && <p><strong>{msg}</strong></p>}
             <form className='flex_center' method='POST' action={`/api/post_comment?id=${scenario._id}`}>
                 <textarea id="comment" placeholder="comment (max length: 300 characters)" name="comment" rows="15" cols="40"></textarea>
                 <br/>

@@ -29,7 +29,7 @@ export default function Layout({ navbar, moderator, children }) {
           <Link href="/">Dashboard</Link>
           <Link href="/profile">Your Profile</Link>
           <Link href="/new_scenario">New Scenario</Link>
-          {moderator == "yes" && <Link href="/admin">Admin Page</Link>}
+          {moderator == "yes" && <Link href="/mod">Mod Page</Link>}
         </div>
       }
       <main className={styles.flex_center + " " + styles.content}>

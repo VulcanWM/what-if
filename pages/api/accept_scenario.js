@@ -18,7 +18,7 @@ export default async (req, res) => {
         } else {
             const id = req.query.id
             const func = await accept_scenario(id)
-            res.redirect(`/admin?msg=${func}`)
+            res.redirect(`/mod?msg=${func}`)
         }
     } else {
         res.redirect("/")

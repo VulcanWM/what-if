@@ -14,7 +14,7 @@ export default function Home( { user, scenarios } ) {
     <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
       <>
         {msg && <p><strong>{msg}</strong></p>}
-        <h2>Admin Dashboard</h2>
+        <h2>Mod Dashboard</h2>
         {scenarios.length == 0 && <p>There are no unverified scenarios!</p>}
         { 
           scenarios.map((scenario, index) => ( 
