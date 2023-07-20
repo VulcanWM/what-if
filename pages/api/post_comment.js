@@ -12,6 +12,10 @@ export default async (req, res) => {
         if (!user){
             res.redirect("/create_account")
         }
+        if (user.banned != false){
+          res.redirect("/dashboard");
+          return;
+       }
         const id = req.query.id
         const comment = req.body.comment;
         const func = await post_comment(id, profanity.censor(comment), user.username)

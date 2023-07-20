@@ -79,6 +79,7 @@ export async function getServerSideProps(context) {
       },
     }
   }
+
   const document = await get_user(context.params.username)
   if (!document){
     return {

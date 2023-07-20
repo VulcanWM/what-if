@@ -10,7 +10,7 @@ export default async (req, res) => {
         const user = await get_user_from_email(email);
         const username = user.username;
         if (user){
-            if (user.banned == true){
+            if (user.banned != false){
                 res.redirect("/dashboard");
                 return;
             }

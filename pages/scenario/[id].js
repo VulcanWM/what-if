@@ -68,6 +68,15 @@ export async function getServerSideProps(context) {
     }
   }
 
+  if (user.banned != false){
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    }
+  }
+
   const id = context.params.id;
   const scenario = await get_scenario(id)
   if (!scenario){

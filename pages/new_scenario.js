@@ -42,6 +42,16 @@ export async function getServerSideProps(context) {
       },
     }
   }
+
+  if (user.banned != false){
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    }
+  }
+
   return {
     props: {
       user: JSON.stringify(user),
