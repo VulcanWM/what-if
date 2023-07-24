@@ -17,6 +17,10 @@ export default function Layout({ navbar, moderator, children }) {
           property="og:image"
           content="/logo.png"
         />
+        <meta
+          name="og:description"
+          content="a website where you will face hypothetical scenarios (what if), and you can enter your thoughts for each of them"
+        />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content={siteTitle} />
