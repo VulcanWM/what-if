@@ -33,17 +33,19 @@ export default function Home( { user, scenarios } ) {
           <button>Unban User</button>
         </form>
         {scenarios.length == 0 && <p>There are no unverified scenarios!</p>}
-        { 
-          scenarios.map((scenario, index) => ( 
-            <div id={index}>
-                <p>{scenario.title}</p>
-                <p>{scenario.desc}</p>
-                <p>By: {scenario.username}</p>
-                <a href={`/api/accept_scenario?id=${scenario._id}`}>Accept Scenario</a>
-                <a href={`/api/decline_scenario?id=${scenario._id}`}>Decline Scenario</a>
-            </div>
-          ))
-        }
+        <div id="scenarios">
+          { 
+            scenarios.map((scenario, index) => ( 
+              <div id={index}>
+                  <h4>{scenario.title}</h4>
+                  <p>{scenario.desc}</p>
+                  <p>By: <i>{scenario.username}</i></p>
+                  <a className="marginRight" href={`/api/accept_scenario?id=${scenario._id}`}>Accept Scenario</a>
+                  <a href={`/api/decline_scenario?id=${scenario._id}`}>Decline Scenario</a><br/><br/>
+              </div>
+            ))
+          }
+        </div>
       </>
     </Layout>
   );

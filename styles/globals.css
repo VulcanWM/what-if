@@ -141,3 +141,7 @@ tr:hover {
     justify-content: center;
     align-items: center;
 }
+
+.marginRight {
+    margin-right: 10px;
+}
