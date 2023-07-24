@@ -6,7 +6,7 @@ import { get_user_from_email } from "../lib/database"
 export default function Home( { user } ) {
   user = JSON.parse(user)
   return (
-    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
+    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"} pageTitle="New Scenario">
       <>
       <h2>Create a new scenario</h2>
         <p>If your scenario gets accepted, you'll get the Helper role!</p>

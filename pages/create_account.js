@@ -8,7 +8,7 @@ export default function Home( { session_user } ) {
   const router = useRouter()
   const { error } = router.query
   return (
-    <Layout>
+    <Layout pageTitle="Create Account">
         {error && <p className="error">{error}</p>}
         <h4>Hello <strong>{session_user.email}</strong></h4>
         <p>For you to use this website, you need to give yourself a username</p>

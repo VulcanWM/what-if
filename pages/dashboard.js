@@ -15,7 +15,7 @@ export default function Home( { user, scenarios } ) {
   const [sort, setSort] = useState("All")
 
   return (
-    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
+    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"} pageTitle="Dashboard">
       <>
         {user.banned != false ? <h1>You have been banned for {user.banned}</h1> : 
         <>

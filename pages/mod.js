@@ -11,7 +11,7 @@ export default function Home( { user, scenarios } ) {
   const router = useRouter()
   const { msg } = router.query
   return (
-    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
+    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"} pageTitle={"Mod Dashboard"}>
       <>
         {msg && <p><strong>{msg}</strong></p>}
         <h2>Mod Dashboard</h2>

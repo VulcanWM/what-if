@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const siteTitle = "What If";
 
-export default function Layout({ navbar, moderator, children }) {
+export default function Layout({ navbar, moderator, pageTitle, children }) {
   return (
     <div>
       <Head>
@@ -26,14 +26,14 @@ export default function Layout({ navbar, moderator, children }) {
         <meta property="og:site_name" content={siteTitle} />
         <meta name="robots" content="index, follow"/>
         <meta property="og:type" content="Website" />
-        <title>{siteTitle}</title>
+        <title>{siteTitle} {pageTitle && (" - " + pageTitle)}</title>
       </Head>
       {navbar == "yes" && 
         <div className={styles.topnav + " " + styles.flex_center + " " + styles.flex_row}>
           <Link href="/">Dashboard</Link>
           <Link href="/profile">Your Profile</Link>
           <Link href="/new_scenario">New Scenario</Link>
-          {moderator == "yes" && <Link href="/mod">Mod Page</Link>}
+          {moderator == "yes" && <Link href="/mod">Mod Dashboard</Link>}
         </div>
       }
       <main className={styles.flex_center + " " + styles.content}>

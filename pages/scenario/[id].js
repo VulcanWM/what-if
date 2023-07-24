@@ -12,7 +12,7 @@ export default function Home( { user, scenario, comments } ) {
   const { msg } = router.query
   const colors = ["#1e2938", "#304769", "#29426b"]
   return (
-    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
+    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"} pageTitle={scenario.title}>
       <>
         {msg && <p><strong>{msg}</strong></p>}
         <h2>{scenario.title}</h2>

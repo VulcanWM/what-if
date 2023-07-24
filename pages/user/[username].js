@@ -13,7 +13,7 @@ export default function Home( { user, document, scenarios } ) {
   const router = useRouter()
   const rolesinfo={"Owner": "This user is the owner of this website!", "Moderator": "This User has the power to do anything!", "Helper": "This user has suggested a scenario and it has been verified!", "Tester": "This user has helped in testing out this website!", "Contributor": "This user has helped with this website's code!", "Early User": "This user is one of this website's first users!"}
   return (
-    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"}>
+    <Layout navbar="yes" moderator={user.roles.includes("Moderator")?"yes":"no"} pageTitle={document.username + "'s profile"}>
       <>
         {document.banned != false ? <h3>{document.username} has been banned for {document.banned}</h3>: 
           <>
