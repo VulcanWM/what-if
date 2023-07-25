@@ -63,7 +63,7 @@ export default function Home( { user, scenarios } ) {
                         {user.posted.includes(scenario._id) ? <></> : 
                           <tr id={index} style={{cursor: "pointer"}} onClick={() => {router.push(`/scenario/${scenario._id}`)}}>
                             <td>{scenario.title}</td>
-                            <td>Yes</td>
+                            <td>No</td>
                           </tr>
                         }
                       </>
