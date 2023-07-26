@@ -21,6 +21,7 @@ export default async (req, res) => {
         const comment = req.body.comment.trim();
         if (comment.length == 0){
             res.redirect(`/scenario/${id}?msg=You need to input something for your thought!`)
+            return;
         }
         const func = await post_comment(id, profanity.censor(comment), user.username)
         if (func == true){

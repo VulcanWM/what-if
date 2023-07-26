@@ -14,8 +14,8 @@ export default async (req, res) => {
         if (email_exists){
             res.redirect("/dashboard");
         } else {
-            if (username == ""){
-              res.redirect(`/create_account?error=Your username cannot be empty!`);
+            if (username.length < 1){
+              res.redirect(`/create_account?error=Your username has to have at least 1 characters!`);
               return;
             }
             if (username.length > 20){

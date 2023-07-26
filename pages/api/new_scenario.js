@@ -21,6 +21,14 @@ export default async (req, res) => {
             }
             const title = req.body['title'].trim();
             const desc = req.body['desc'].trim();
+            if (title.length < 3){
+              res.redirect("/dashboard?msg=Your scenario title needs to have at least 3 characters!")
+              return;
+            }
+            if (desc.length < 3){
+              res.redirect("/dashboard?msg=Your scenario description needs to have at least 3 characters!")
+              return;
+            }
             if (title.length > 60){
               res.redirect("/dashboard?msg=Your scenario title cannot have more than 60 characters!")
               return;
