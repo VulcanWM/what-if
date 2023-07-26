@@ -92,8 +92,8 @@ textarea {
 table {
     font-family: arial, sans-serif;
     border-collapse: seperate;
-    width: 100%;
-    max-width: 50vw;
+    width: 60%;
+/*     max-width: 50vw; */
     border-spacing: 0;
     text-align: center;
 }
@@ -144,4 +144,18 @@ tr:hover {
 
 .marginRight {
     margin-right: 10px;
+}
+
+/* Media quaries */
+
+@media screen and (max-width:760px){
+    table {
+        width:80%;
+    }
+}
+
+@media screen and (max-width:420px){
+    table {
+        width:100%;
+    }
 }
