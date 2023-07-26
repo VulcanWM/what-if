@@ -11,13 +11,17 @@ export default async (req, res) => {
         const user = await get_user_from_email(email);
         if (!user){
             res.redirect("/create_account")
+            return;
         }
         if (user.banned != false){
           res.redirect("/dashboard");
           return;
        }
         const id = req.query.id
-        const comment = req.body.comment;
+        const comment = req.body.comment.trim();
+        if (comment.length == 0){
+            res.redirect(`/scenario/${id}?msg=You need to input something for your thought!`)
+        }
         const func = await post_comment(id, profanity.censor(comment), user.username)
         if (func == true){
             res.redirect(`/scenario/${id}`)
