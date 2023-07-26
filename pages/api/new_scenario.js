@@ -19,8 +19,16 @@ export default async (req, res) => {
                 res.redirect("/dashboard?msg=You cannot have more than 5 unverified scenarios!")
                 return;
             }
-            const title = req.body['title'];
-            const desc = req.body['desc'];
+            const title = req.body['title'].trim();
+            const desc = req.body['desc'].trim();
+            if (title.length > 60){
+              res.redirect("/dashboard?msg=Your scenario title cannot have more than 60 characters!")
+              return;
+            }
+            if (desc.length > 250){
+              res.redirect("/dashboard?msg=Your scenario description cannot have more than 250 characters!")
+              return;
+            }
             await add_scenario(title, desc, username)
             res.redirect("/dashboard?msg=This scenerio is now waiting for verification!")
         } else {

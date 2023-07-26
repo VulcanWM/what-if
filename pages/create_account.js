@@ -13,7 +13,7 @@ export default function Home( { session_user } ) {
         <h4>Hello <strong>{session_user.email}</strong></h4>
         <p>For you to use this website, you need to give yourself a username</p>
         <form className='flex_center' action="/api/create_account" method='POST'>
-            <input name="username" placeholder="username"/><br/>
+            <input name="username" placeholder="username" maxlength="20" required/><br/>
             <input type="submit" value="Submit"/>
         </form>
     </Layout>
