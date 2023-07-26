@@ -8,8 +8,7 @@ export default async (req, res) => {
     if (session) {
         const email = session.user.email;
         const image = session.user.image;
-        const username = req.body.username;
-        username = username.trim()
+        const username = req.body.username.trim();
         const email_exists = await get_user_from_email(email);
         if (email_exists){
             res.redirect("/dashboard");
