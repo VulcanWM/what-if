@@ -30,6 +30,8 @@ export default function Layout({ navbar, moderator, pageTitle, children }) {
         <meta property="og:site_name" content={siteTitle} />
         <meta name="robots" content="index, follow"/>
         <meta property="og:type" content="Website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <title>{fullPageTitle}</title>
       </Head>
       {navbar == "yes" && 
