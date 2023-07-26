@@ -15,7 +15,7 @@ export default async (req, res) => {
                 return;
             }
             const nv_scenarios = await get_nv_scenario_user(username);
-            if (nv_scenarios.length > 5){
+            if (nv_scenarios.length >= 5){
                 res.redirect("/dashboard?msg=You cannot have more than 5 unverified scenarios!")
                 return;
             }
