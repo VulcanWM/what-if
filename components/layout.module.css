@@ -9,10 +9,12 @@
     flex-direction: row;
 }
 
-
-.content {
-    margin: 0 5em;
+@media screen and (min-width: 640px) {
+    .content {
+        margin: 0 5em;
+    }
 }
+
 
 /* Add a black background color to the top navigation */
 .topnav {
