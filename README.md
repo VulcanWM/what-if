@@ -5,3 +5,7 @@ This is a website where you will face hypothetical scenarios (what if), and you 
 After you enter your thought, you will be able to view what other user's have said, and compare your thoughts to their's!
 
 [Check out the website!](https://what-if-scenarios.vercel.app/)
+
+---
+
+If you want to be a moderator, either email me at vulcanwmemail@gmail.com or DM me on [Twitter](https://twitter.com/VulcanWM).
